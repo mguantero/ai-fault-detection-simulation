@@ -12,10 +12,10 @@ This repository contains a MATLAB-based simulation for **fault detection in comm
   - Short Faults
   - Impedance Mismatch
 - **Electromagnetic Feature Extraction**:
-  - Reflection coefficient (\(\Gamma\)) — magnitude and phase
+  - Reflection coefficient — magnitude and phase
   - Voltage Standing Wave Ratio (VSWR)
-  - Complex Permittivity (\(\varepsilon' - j\varepsilon''\))
-  - Conductivity (\(\sigma\)).
+  - Complex Permittivity 
+  - Conductivity
 - **Classification**:
   - Multi-class Support Vector Machine (SVM) with Radial Basis Kernel Function.
   - Achieves high classification accuracy with clear decision boundaries.
@@ -40,12 +40,23 @@ This repository contains a MATLAB-based simulation for **fault detection in comm
 .
 ├── README.md            # Repository instructions and details.
 ├── simulate_fault_classification.m  # Main simulation script.
-├── matlab_functions/    # Custom helper functions folder.
-│   ├── extract_features.m  # Sub-functions for feature processing.
-│   ├── svm_train_eval.m     # SVM training and testing.
-│   └── plot_results.m       # Visualization utilities.
-├── data/                # (Optional) Stores results, datasets, or logs.
-└── LICENSE              # License details for open-source usage.
+├── data/    
+│   ├── README_dataset.m     # Dataset Details.
+│   ├── transmission_line_data.mat    # Dataset matrix/data
+│   └── transmission_line_data.csv    # Dataset csv file
+├── models/    
+│   ├── best_model.mat  # Project trains and evaluates types of models
+│   └── README_model.md    # Model Details.
+├── src/    # Source details.
+│   ├── generate_dataset.m  # Create a simple GUI for fault detection.
+│   ├── preprocess_data.m    # Preprocesses the transmission line fault data for modeling
+│   ├── simulate_transmission_line.m  # Simulates a coaxial transmission line with different fault types
+│   ├── train_model.m   # SVM training and testing.
+│   └── utils.m       # Visualization utilities.
+└── LICENSE     
+    ├── fault_detection_gui.m  # Create a simple GUI for fault detection
+    ├── plot_results.m    # Create visualizations of simulation results and model performance
+    └── smith_chart.m    # Create a standard Smith chart visualization of reflection data
 ```
 
 ---
@@ -97,10 +108,13 @@ Each fault class contributes 500 synthetic examples with randomized feature pert
 
 ## 🖼️ Example Outputs
 
-1. **Reflection Coefficient and Fault Separation**:
-   ![Sample Output for Reflection Coefficient](./images/reflection_distribution.png)
+1. **Dataset, Reflection Coefficient and Fault Separation**:
+<img width="922" height="777" alt="image" src="https://github.com/user-attachments/assets/3b9be654-dc28-4f93-bb42-88699d0feee2" />
 
-2. **Classification Results**:
+
+
+
+3. **Classification Results**:
    - Confusion Matrix:
      ```
      Normal  Open  Short  Mismatch
@@ -119,14 +133,6 @@ Each fault class contributes 500 synthetic examples with randomized feature pert
 - **Feature Separation**:
   - Effective feature classes, especially \(|\Gamma|\) and VSWR, offer intuitive diagnostic insights.
   - Incorporating material properties improves interpretability for Short Faults.
-
----
-
-## 🔗 Quick Access to Code
-
-For the full MATLAB code, visit the corresponding files in the repository:
-- Dataset simulation and SVM: [`simulate_fault_classification.m`](./simulate_fault_classification.m)
-- Helper functions in: [`matlab_functions/`](./matlab_functions/)
 
 ---
 
@@ -149,4 +155,4 @@ This repository is licensed under the **MIT License**. See [LICENSE](./LICENSE) 
 
 For support or inquiries, please reach out via:
 - **GitHub Issues**: [Open an Issue](https://github.com/mguantero/ai-based-fault-detection/issues)
-- **Email**: mguantero@example.com (Replace with your email)
+- **Email**: guantero.marvin21@gmail.com
